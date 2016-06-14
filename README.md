@@ -52,5 +52,5 @@ Si vous l’inspiration vous manque, voiçi quelques pistes :
 notera que c’est bien plus simple qu’il n’y paraît.
 - “AJAXifier” les échanges avec le serveur.
 - Faire une pagination infinie sur la partie galerie.
-• Pouvoir partager ses images sur les réseaux sociaux.
-• Pouvoir faire un rendu d’un GIF animé.
+- Pouvoir partager ses images sur les réseaux sociaux.
+- Pouvoir faire un rendu d’un GIF animé.
