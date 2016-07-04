@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <HTML>
   <header>
@@ -8,6 +11,8 @@
       <div class="title">LOGIN</div>
       <div id="blue">
         <form method="post" style="position: relative;">
+          <label>Email: </label>
+          <input id="mail" name="email" placeholder="email" type="mail">
           <label>Username: </label>
           <input id="name" name="username" placeholder="username" type="text">
           <label>Password: </label>
