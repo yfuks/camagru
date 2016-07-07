@@ -11,7 +11,7 @@ session_start();
     <div id="login">
       <div class="title">SIGNUP</div>
       <div id="blue">
-        <form method="post" style="position: relative;" action="scripts/login.php">
+        <form method="post" style="position: relative;" action="scripts/signup.php">
           <label>Email: </label>
           <input id="mail" name="email" placeholder="email" type="mail">
           <label>Username: </label>
@@ -21,7 +21,10 @@ session_start();
           <input name="submit" type="submit" value=" SEND ">
         </form>
       </div>
-      <?php echo "$_SESSION['error']"; ?>
+      <?php
+      echo $_SESSION['error'];
+      $_SESSION['error'] = null;
+      ?>
     </div>
   </body>
 </HTML>
