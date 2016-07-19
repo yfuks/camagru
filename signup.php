@@ -12,7 +12,7 @@ session_start();
     <div id="login">
       <div class="title">SIGNUP</div>
       <div id="blue">
-        <form method="post" style="position: relative;" action="scripts/signup.php">
+        <form method="post" style="position: relative;" action="functions/signup.php">
           <label>Email: </label>
           <input id="mail" name="email" placeholder="email" type="mail">
           <label>Username: </label>
@@ -25,6 +25,10 @@ session_start();
       <?php
       echo $_SESSION['error'];
       $_SESSION['error'] = null;
+      if (isset($_SESSION['signup_success'])) {
+        echo "Signup success please check your mail box";
+        $_SESSION['signup_success'] = null;
+      }
       ?>
     </div>
   </body>

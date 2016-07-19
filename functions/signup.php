@@ -1,6 +1,7 @@
 <?php
 
 include '../setup/database.php';
+include '../functions/mail.php';
 
 session_start();
 
@@ -27,8 +28,13 @@ try {
         // encrypt password
         $password = password_hash($password, PASSWORD_BCRYPT);
 
-        $query= $dbh->prepare("INSERT INTO users (username, mail, password) VALUES (:username, :mail, :password)");
-        $query->execute(array(':username' => $username, ':mail' => $mail, ':password' => $password));
+        $query= $dbh->prepare("INSERT INTO users (username, mail, password, token) VALUES (:username, :mail, :password, :token)");
+        $token = uniqid(rand(), true);
+        $query->execute(array(':username' => $username, ':mail' => $mail, ':password' => $password, ':token' => $token));
+        send_verification_email($mail, $username, $token, $_SERVER['HTTP_HOST']);
+
+        $_SESSION['signup_success'] = true;
+
         header("Location: ../signup.php");
     } catch (PDOException $e) {
         $_SESSION['error'] = "ERROR: ".$e->getMessage();
