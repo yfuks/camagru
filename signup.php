@@ -5,6 +5,7 @@ session_start();
 <HTML>
   <header>
     <link rel="stylesheet" type="text/css" href="style/index.css">
+    <meta charset="UTF-8">
     <title>SIGNUP</title>
   </header>
   <body>
