@@ -22,8 +22,8 @@ session_start();
           <label>Password: </label>
           <input id="password" name="password" placeholder="password" type="password">
           <input name="submit" type="submit" value=" SEND ">
-          <a href="signup.php" target="_blank">Create account</a>
-          <a href="#" target="_blank">Forget password ?</a>
+          <a href="signup.php">Create account</a>
+          <a href="#">Forget password ?</a>
           <span><?php echo $error; ?></span>
         </form>
       </div>
