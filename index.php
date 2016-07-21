@@ -1,5 +1,6 @@
 <?php
 session_start();
+//session_unset();
 ?>
 <!DOCTYPE html>
 <HTML>
@@ -9,12 +10,13 @@ session_start();
     <title>CAMAGRU</title>
   </header>
   <body>
-    <?php if(isset($_SESSION['id'])) { ?>
-      log in
-    <?php } else { ?>
+    <?php include('fragments/header.php') ?>
     <div id="login">
       <div class="title">LOGIN</div>
       <div id="blue">
+        <?php if(isset($_SESSION['id'])) { ?>
+          log in
+        <?php } else { ?>
         <form method="post" style="position: relative;" action="forms/login.php">
           <label>Email: </label>
           <input id="mail" name="email" placeholder="email" type="mail">
@@ -30,8 +32,8 @@ session_start();
             ?>
           </span>
         </form>
+        <?php } ?>
       </div>
     </div>
-    <?php } ?>
   </body>
 </HTML>

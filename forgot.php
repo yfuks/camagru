@@ -9,6 +9,7 @@ session_start();
     <title>CAMAGRU - FORGOT</title>
   </header>
   <body>
+    <?php include('fragments/header.php') ?>
     <div id="login">
       <div class="title">FORGOT</div>
       <div id="blue">

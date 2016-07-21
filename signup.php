@@ -9,6 +9,7 @@ session_start();
     <title>SIGNUP</title>
   </header>
   <body>
+    <?php include('fragments/header.php') ?>
     <div id="login">
       <div class="title">SIGNUP</div>
       <div id="blue">
@@ -20,7 +21,6 @@ session_start();
           <label>Password: </label>
           <input id="password" name="password" placeholder="password" type="password">
           <input name="submit" type="submit" value=" SEND ">
-          <a href="index.php">login</a>
           <span>
             <?php
             echo $_SESSION['error'];

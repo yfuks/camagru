@@ -10,6 +10,7 @@ include_once './functions/verify.php';
     <title>CAMAGRU - VERIFY</title>
   </header>
   <body>
+    <?php include('fragments/header.php') ?>
     <div id="login">
     <div class="title">VERIFY</div>
     <?php if (verify($_GET["token"]) == 0) { ?>
@@ -21,9 +22,6 @@ include_once './functions/verify.php';
         An error have occured
       </strong>
     <?php } ?>
-    <div id="blue">
-      <a href="index.php">Login</a>
-    </div>
     </div>
   </body>
 </HTML>
