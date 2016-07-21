@@ -26,7 +26,7 @@ try {
         $query->closeCursor();
 
         // encrypt password
-        $password = password_hash($password, PASSWORD_BCRYPT);
+        $password = hash("whirlpool", $password);
 
         $query= $dbh->prepare("INSERT INTO users (username, mail, password, token) VALUES (:username, :mail, :password, :token)");
         $token = uniqid(rand(), true);
