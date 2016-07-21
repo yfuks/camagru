@@ -4,4 +4,4 @@ Premier projet Web ecole 42 [Voir le sujet](https://github.com/yfuks/camagru/blo
 
 ### Avancement
 
-![Progress](http://progressed.io/bar/25) 
+![Progress](http://progressed.io/bar/27) 
