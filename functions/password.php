@@ -7,8 +7,8 @@ function reset_password($userMail) {
   try {
       $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
       $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      $query= $dbh->prepare("SELECT id, username FROM users WHERE mail=?");
-      $userMail = strtolower($userMail);
+      $query= $dbh->prepare("SELECT id, username FROM users WHERE mail=:mail");
+      $userMail = strtolower(':mail' => $userMail);
       $query->execute(array($userMail));
 
       $val = $query->fetch();
@@ -21,8 +21,8 @@ function reset_password($userMail) {
       $pass = uniqid('');
       $passEncrypt = hash("whirlpool", $pass);
 
-      $query= $dbh->prepare("UPDATE users SET password=? WHERE mail=?");
-      $query->execute(array($passEncrypt, $userMail));
+      $query= $dbh->prepare("UPDATE users SET password=:password WHERE mail=:mail");
+      $query->execute(array(':password' => $passEncrypt, ':mail' => $userMail));
       $query->closeCursor();
 
       send_forget_mail($userMail, $val['username'], $pass);
