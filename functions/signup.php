@@ -1,42 +1,37 @@
 <?php
 
-include '../setup/database.php';
-include '../functions/mail.php';
+function signup($mail, $username, $password, $host) {
+  include_once '../setup/database.php';
+  include_once '../functions/mail.php';
 
-session_start();
+  $mail = strtolower($mail);
 
-// retreive values
-$mail = $_POST['email'];
-$username = $_POST['username'];
-$password = $_POST['password'];
+  try {
+          $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+          $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          $query= $dbh->prepare("SELECT id FROM users WHERE username=? OR mail=?");
+          $query->execute(array($username, $mail));
 
-$_SESSION['error'] = null;
+          if ($val = $query->fetch()) {
+            $_SESSION['error'] = "user already exist";
+            $query->closeCursor();
+            return(-1);
+          }
+          $query->closeCursor();
 
-try {
-        $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
-        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $query= $dbh->prepare("SELECT id FROM users WHERE username=?");
-        $query->execute(array($username));
+          // encrypt password
+          $password = hash("whirlpool", $password);
 
-        if ($val = $query->fetch()) {
-          $_SESSION['error'] = "user already exist";
-          header("Location: ../signup.php");
-          exit(-1);
-        }
-        $query->closeCursor();
+          $query= $dbh->prepare("INSERT INTO users (username, mail, password, token) VALUES (:username, :mail, :password, :token)");
+          $token = uniqid(rand(), true);
+          $query->execute(array(':username' => $username, ':mail' => $mail, ':password' => $password, ':token' => $token));
+          send_verification_email($mail, $username, $token, $host);
 
-        // encrypt password
-        $password = hash("whirlpool", $password);
+          $_SESSION['signup_success'] = true;
+          return (0);
+      } catch (PDOException $e) {
+          $_SESSION['error'] = "ERROR: ".$e->getMessage();
+      }
+}
 
-        $query= $dbh->prepare("INSERT INTO users (username, mail, password, token) VALUES (:username, :mail, :password, :token)");
-        $token = uniqid(rand(), true);
-        $query->execute(array(':username' => $username, ':mail' => $mail, ':password' => $password, ':token' => $token));
-        send_verification_email($mail, $username, $token, $_SERVER['HTTP_HOST']);
-
-        $_SESSION['signup_success'] = true;
-
-        header("Location: ../signup.php");
-    } catch (PDOException $e) {
-        $_SESSION['error'] = "ERROR: ".$e->getMessage();
-    }
 ?>

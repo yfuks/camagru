@@ -13,6 +13,7 @@ function reset_password($userMail) {
 
       $val = $query->fetch();
       if ($val == null) {
+          $query->closeCursor();
           return (-1);
       }
       $query->closeCursor();

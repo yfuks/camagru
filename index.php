@@ -15,17 +15,20 @@ session_start();
     <div id="login">
       <div class="title">LOGIN</div>
       <div id="blue">
-        <form method="post" style="position: relative;">
+        <form method="post" style="position: relative;" action="forms/login.php">
           <label>Email: </label>
           <input id="mail" name="email" placeholder="email" type="mail">
-          <label>Username: </label>
-          <input id="name" name="username" placeholder="username" type="text">
           <label>Password: </label>
           <input id="password" name="password" placeholder="password" type="password">
           <input name="submit" type="submit" value=" SEND ">
           <a href="signup.php">Create account</a>
           <a href="forgot.php">Forget password ?</a>
-          <span><?php echo $error; ?></span>
+          <span>
+            <?php
+              echo $_SESSION['error'];
+              $_SESSION['error'] = null;
+            ?>
+          </span>
         </form>
       </div>
     </div>
