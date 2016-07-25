@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+}
+#header {
+  width: 100%;
+  height: 80px;
+  background-color: bisque;
+  text-align: center;
+}
+.button {
+  float: right;
+  height: 80px;
+  width: 100px;
+  line-height: 70px;
+}
+.button:hover {
+  background-color: antiquewhite;
+  cursor: pointer;
+}
+.footer {
+  width: 100%;
+  height: 28px;
+  line-height: 28px;
+  background-color: bisque;
+  text-align: center;
+}
+.body {
+  margin: 8px;
+  display: flex;
+}
+.main {
+  width: 70%;
+  height: 500px;
+}
+.side {
+  width: calc(30% - 10px);
+  margin-left: 10px;
+  height: 500px;
+}
