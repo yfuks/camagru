@@ -29,11 +29,25 @@ try {
           `verified` VARCHAR(1) NOT NULL DEFAULT 'N'
         )";
         $dbh->exec($sql);
-        echo "Table created successfully\n";
+        echo "Table users created successfully\n";
     } catch (PDOException $e) {
         echo "ERROR CREATING TABLE: ".$e->getMessage()."\nAborting process\n";
     }
 
 // CREATE TABLE GALLERY
-// @todo
+try {
+        // Connect to DATABASE previously created
+        $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "CREATE TABLE `gallery` (
+          `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+          `userid` INT(11) NOT NULL,
+          `img` VARCHAR(100) NOT NULL,
+          FOREIGN KEY (userid) REFERENCES users(id)
+        )";
+        $dbh->exec($sql);
+        echo "Table gallery created successfully\n";
+    } catch (PDOException $e) {
+        echo "ERROR CREATING TABLE: ".$e->getMessage()."\nAborting process\n";
+    }
 ?>
