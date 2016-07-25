@@ -7,9 +7,9 @@ function reset_password($userMail) {
   try {
       $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
       $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      $query= $dbh->prepare("SELECT id, username FROM users WHERE mail=:mail");
-      $userMail = strtolower(':mail' => $userMail);
-      $query->execute(array($userMail));
+      $query= $dbh->prepare("SELECT id, username FROM users WHERE mail=:mail AND verified='Y'");
+      $userMail = strtolower($userMail);
+      $query->execute(array(':mail' => $userMail));
 
       $val = $query->fetch();
       if ($val == null) {

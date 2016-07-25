@@ -11,6 +11,7 @@ session_start();
   </header>
   <body>
     <?php include('fragments/header.php') ?>
+    <?php include('fragments/footer.php') ?>
     <div id="login">
       <div class="title">LOGIN</div>
       <div id="blue">

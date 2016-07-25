@@ -57,3 +57,11 @@ input[type="submit"] {
   background-color: antiquewhite;
   cursor: pointer;
 }
+.footer {
+  position: absolute;
+  bottom: 0px;
+  height: 18px;
+  width: 100%;
+  text-align: center;
+  background-color: bisque;
+}

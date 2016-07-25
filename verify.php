@@ -11,6 +11,7 @@ include_once './functions/verify.php';
   </header>
   <body>
     <?php include('fragments/header.php') ?>
+    <?php include('fragments/footer.php') ?>
     <div id="login">
     <div class="title">VERIFY</div>
     <?php if (verify($_GET["token"]) == 0) { ?>
