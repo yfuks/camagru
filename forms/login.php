@@ -12,7 +12,8 @@ if (($val = log_user($mail, $password)) == -1) {
 } else if (isset($val['err'])) {
   $_SESSION['error'] = $val['err'];
 } else {
-  $_SESSION['id'] = $val;
+  $_SESSION['id'] = $val['id'];
+  $_SESSION['username'] = $val['username'];
 }
 
 header("Location: ../index.php");

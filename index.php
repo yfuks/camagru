@@ -15,7 +15,7 @@ session_start();
       <div class="title">LOGIN</div>
       <div id="blue">
         <?php if(isset($_SESSION['id'])) { ?>
-          log in
+          You are connected as <?php print_r($_SESSION['username']) ?>
         <?php } else { ?>
         <form method="post" style="position: relative;" action="forms/login.php">
           <label>Email: </label>
