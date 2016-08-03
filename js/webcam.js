@@ -9,9 +9,9 @@ if (navigator.getUserMedia) {
 
     button.onclick = function() {
       var image = new Image();
+
+
       image.addEventListener("load", function() {
-          var split = image.src.split("/");
-          var file = split[split.length - 1];
           if (file === "cadre.png") {
             canvas.getContext("2d").drawImage(image, 0, 0, 1024, 768, 0, 0, 640, 480);
           } else if (file === "cigarette.png") {
@@ -20,11 +20,24 @@ if (navigator.getUserMedia) {
             canvas.getContext("2d").drawImage(image, 0, 0, 1024, 768, 180, 0, 240, 180);
           }
       }, false);
+
       image.src = document.querySelector('input[name="img"]:checked').value; // Set source path
+      var split = image.src.split("/");
+      var file = split[split.length - 1];
 
 			canvas.getContext("2d").drawImage(video, 0, 0, 640, 480, 0, 0, 640, 480);
       canvas.style.display = "block";
 			var img = canvas.toDataURL("image/png");
+
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+    		if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+          console.log('ok');
+    		}
+  	  };
+      xhr.open("POST", "/forms/montage.php", true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.send("img=" + "../img/" + file + "&f=" + img);
 		};
 }
 

@@ -11,7 +11,7 @@ session_start();
   <body>
     <?php include('fragments/header.php') ?>
       <div class="body">
-        <?php //if(isset($_SESSION['id'])) { ?>
+        <?php if(isset($_SESSION['id'])) { ?>
         <div class="main">
     		  <div class="select">
       			<img class="thumbnail" src="img/cadre.png"></img>
@@ -31,9 +31,9 @@ session_start();
         <div class="side">
 			<div class="title">Montages</div>
 		</div>
-        <?php //} else { ?>
-          <!-- You need to connect to use the gallery -->
-        <?php //} ?>
+        <?php } else { ?>
+          You need to connect to use the gallery
+        <?php } ?>
       </div>
     <?php include('fragments/footer.php') ?>
   </body>
