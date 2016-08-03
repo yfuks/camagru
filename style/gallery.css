@@ -32,7 +32,6 @@ body {
   width: 890px;
 }
 .main {
-  height: 620px;
   width: 640px;
   position: relative;
 }
@@ -55,14 +54,15 @@ body {
 }
 .capture {
 	position: absolute;
-    bottom: 25px;
-    left: 0;
-    right: 0;
-    height: 50px;
-    background-color: rgba(162, 187, 202, 0.5);
-    text-align: center;
-    line-height: 50px;
+  top: 545px;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background-color: rgba(162, 187, 202, 0.5);
+  text-align: center;
+  line-height: 50px;
 	font-size: 25px;
+  display: none;
 }
 .capture:hover {
 	cursor: pointer;

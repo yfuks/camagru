@@ -2,11 +2,12 @@
 session_start();
 
 // retreive values
-$img = $_GET['i'];
-$filter = $_GET['f'];
+$img = $_POST['img'];
+$filter = $_POST['f'];
+$id = $_SESSION['id'];
 
 // On charge d'abord les images
-$source = imagecreatefrompng("logo.png"); // Le logo est la source
+$source = imagecreatefrompng($img); // Le logo est la source
 $destination = imagecreatefromjpeg("couchersoleil.jpg"); // La photo est la destination
 
 // Les fonctions imagesx et imagesy renvoient la largeur et la hauteur d'une image
