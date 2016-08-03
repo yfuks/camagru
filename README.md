@@ -4,7 +4,7 @@ Premier projet Web ecole 42 [Voir le sujet](https://github.com/yfuks/camagru/blo
 
 ### Avancement
 
-![Progress](http://progressed.io/bar/45) 
+![Progress](http://progressed.io/bar/55) 
 
 @todo :
 [css filter](http://www.w3schools.com/cssref/css3_pr_filter.asp)
