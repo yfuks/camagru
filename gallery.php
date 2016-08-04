@@ -42,7 +42,11 @@ $montages = get_all_montage();
           $gallery = "";
           if ($montages != null) {
             for ($i = 0; $montages[$i] ; $i++) {
-              $gallery .= "<img class=\"icon\" src=\"montage/" . $montages[$i]['img'] . "\" data-userid=\"" . $montages[$i]['userid'] . "\"></img>";
+              $class = "icon";
+              if ($montages[$i]['userid'] === $_SESSION['id']) {
+                $class .= " removable";
+              }
+              $gallery .= "<img class=\"" . $class . "\" src=\"montage/" . $montages[$i]['img'] . "\" data-userid=\"" . $montages[$i]['userid'] . "\"></img>";
             }
             echo $gallery;
           }
@@ -57,5 +61,6 @@ $montages = get_all_montage();
   </body>
   <?php if(isset($_SESSION['id'])) { ?>
   <script type="text/javascript" src="js/webcam.js"></script>
+  <script type="text/javascript" src="js/drop.js"></script>
   <?php } ?>
 </HTML>

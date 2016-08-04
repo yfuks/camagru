@@ -10,7 +10,7 @@ Premier projet Web ecole 42 [Voir le sujet](https://github.com/yfuks/camagru/blo
 - [ ] [css media queries](https://developer.mozilla.org/fr/docs/Web/CSS/Requ%C3%AAtes_m%C3%A9dia/Utiliser_les_Media_queries)
 - [ ] check that no injection can be done
 - [ ] add file importation
-- [ ] let user remove is own montages in gallery.php
+- [X] let user remove is own montages in gallery.php
 - [ ] a gallery page with all images paginate
  - [ ] like/dislike montage
  - [ ] comment montage

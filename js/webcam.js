@@ -37,9 +37,23 @@ if (navigator.getUserMedia) {
       xhr.onreadystatechange = function() {
     		if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0) && xhr.responseText != null && xhr.responseText != "") {
           var newImg = document.createElement("IMG");
-          newImg.className = "icon";
+          newImg.className = "icon removable";
           newImg.src = "montage/" + xhr.responseText;
-          newImg.dataset.removable = true;
+          newImg.onclick = function(event) {
+            var pathToImg = event.srcElement.src;
+            var srcTab = pathToImg.split('/');
+            var src = srcTab[srcTab.length - 1];
+
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+              if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0) && xhr.responseText == "OK") {
+                parent.removeChild(event.srcElement);
+              }
+            };
+            xhr.open("POST", "../forms/removemontage.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.send("src=" + src);
+          }
           miniatures.appendChild(newImg);
     		}
   	  };

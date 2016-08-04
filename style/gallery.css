@@ -96,3 +96,6 @@ body {
   top: 115px;
   left: 0px;
 }
+.removable:hover {
+  cursor: pointer;
+}
