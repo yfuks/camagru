@@ -1,6 +1,7 @@
 var video = document.querySelector("#webcam");
 var canvas = document.getElementById("canvas");
 var button = document.getElementById("pickImage");
+var miniatures = document.getElementById("miniatures");
 
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
 
@@ -31,8 +32,12 @@ if (navigator.getUserMedia) {
 
       var xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function() {
-    		if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
-          console.log('ok');
+    		if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0) && xhr.responseText != null && xhr.responseText != "") {
+          var newImg = document.createElement("IMG");
+          newImg.className = "icon";
+          newImg.src = "montage/" + xhr.responseText;
+          newImg.dataset.removable = true;
+          miniatures.appendChild(newImg);
     		}
   	  };
       xhr.open("POST", "/forms/montage.php", true);

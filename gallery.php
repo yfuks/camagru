@@ -1,5 +1,9 @@
 <?php
 session_start();
+
+include_once("functions/montage.php");
+
+$montages = get_all_montage();
 ?>
 <!DOCTYPE html>
 <HTML>
@@ -30,6 +34,17 @@ session_start();
         </div>
         <div class="side">
 			<div class="title">Montages</div>
+      <div id="miniatures">
+        <?php
+          $gallery = "";
+          if ($montages != null) {
+            for ($i = 0; $montages[$i] ; $i++) {
+              $gallery .= "<img class=\"icon\" src=\"montage/" . $montages[$i]['img'] . "\" data-userid=\"" . $montages[$i]['userid'] . "\"></img>";
+            }
+            echo $gallery;
+          }
+        ?>
+      </div>
 		</div>
         <?php } else { ?>
           You need to connect to use the gallery

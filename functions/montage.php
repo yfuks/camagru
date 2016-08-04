@@ -14,4 +14,27 @@ function add_montage($userId, $imgPath) {
     }
 }
 
+function get_all_montage() {
+  include_once './setup/database.php';
+
+  try {
+      $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+      $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $query= $dbh->prepare("SELECT userid, img FROM gallery");
+      $query->execute();
+
+      $i = 0;
+      $tab;
+      while ($val = $query->fetch()) {
+        $tab[$i] = $val;
+        $i++;
+      }
+      $query->closeCursor();
+
+      return ($tab);
+    } catch (PDOException $e) {
+      return ($e->getMessage());
+    }
+}
+
 ?>
