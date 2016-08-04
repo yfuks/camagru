@@ -26,6 +26,9 @@ $montages = get_all_montage();
       			<input id="hat.png" type="radio" name="img" value="../img/hat.png" onclick="onCheckBoxChecked(this)">
     		  </div>
           <video width="100%" autoplay="true" id="webcam"></video>
+          <img id="hat" style="display:none;" src="img/hat.png"></img>
+          <img id="cigarette" style="display:none;" src="img/cigarette.png"></img>
+          <img id="cadre" style="display:none;" src="img/cadre.png"></img>
     		  <div class="capture" id="pickImage">
             <img class="camera" src="img/camera.png"></img>
           </div>
@@ -52,5 +55,7 @@ $montages = get_all_montage();
       </div>
     <?php include('fragments/footer.php') ?>
   </body>
+  <?php if(isset($_SESSION['id'])) { ?>
   <script type="text/javascript" src="js/webcam.js"></script>
+  <?php } ?>
 </HTML>

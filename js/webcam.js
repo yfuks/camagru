@@ -3,6 +3,10 @@ var canvas = document.getElementById("canvas");
 var button = document.getElementById("pickImage");
 var miniatures = document.getElementById("miniatures");
 
+var cadre = document.getElementById("cadre");
+var cigarette = document.getElementById("cigarette");
+var hat = document.getElementById("hat");
+
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
 
 if (navigator.getUserMedia) {
@@ -27,7 +31,6 @@ if (navigator.getUserMedia) {
       var file = split[split.length - 1];
 
 			canvas.getContext("2d").drawImage(video, 0, 0, 640, 480, 0, 0, 640, 480);
-      canvas.style.display = "block";
 			var img = canvas.toDataURL("image/png");
 
       var xhr = new XMLHttpRequest();
@@ -57,5 +60,18 @@ function videoError(e) {
 function onCheckBoxChecked(checkbox) {
   if (navigator.getUserMedia) {
       button.style.display = "block";
+      if (checkbox.id === "cadre.png") {
+        cadre.style.display = "block";
+        cigarette.style.display = "none";
+        hat.style.display = "none";
+      } else if (checkbox.id === "cigarette.png") {
+        cadre.style.display = "none";
+        cigarette.style.display = "block";
+        hat.style.display = "none";
+      } else {
+        cadre.style.display = "none";
+        cigarette.style.display = "none";
+        hat.style.display = "block";
+      }
   }
 }
