@@ -4,7 +4,7 @@ Premier projet Web ecole 42 [Voir le sujet](https://github.com/yfuks/camagru/blo
 
 ### Avancement
 
-![Progress](http://progressed.io/bar/85)
+![Progress](http://progressed.io/bar/75)
 
 @todo :
 - [ ] [css media queries](https://developer.mozilla.org/fr/docs/Web/CSS/Requ%C3%AAtes_m%C3%A9dia/Utiliser_les_Media_queries)
