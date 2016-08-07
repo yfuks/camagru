@@ -27,7 +27,9 @@ session_start();
           <a href="forgot.php">Forget password ?</a>
           <span>
             <?php
-              echo $_SESSION['error'];
+				if ($_SESSION['error']) {
+					echo $_SESSION['error'];
+				}
               $_SESSION['error'] = null;
             ?>
           </span>
