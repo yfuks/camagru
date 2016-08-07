@@ -24,7 +24,7 @@ function get_all_montage() {
       $query->execute();
 
       $i = 0;
-      $tab;
+      $tab = null;
       while ($val = $query->fetch()) {
         $tab[$i] = $val;
         $i++;
