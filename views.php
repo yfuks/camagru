@@ -38,7 +38,7 @@ if ($montages.length > $imagePerPages) {
               $commentsHTML .= "<span class=\"comment\">" . htmlspecialchars($comments[$j]['username']) ." : " . htmlspecialchars($comments[$j]['comment']) . "</span>";
               $j++;
             }
-            $gallery .= "<div class=\"img\"><img class=\"" . $class . "\" src=\"montage/" . $montages[$i]['img'] . "\"></img>" . $commentsHTML . "</div>";
+            $gallery .= "<div class=\"img\" data-img=\"" . $montages[$i]['img'] . "\"><img class=\"" . $class . "\" src=\"montage/" . $montages[$i]['img'] . "\"></img>" . $commentsHTML . "</div>";
           }
           echo $gallery;
         }

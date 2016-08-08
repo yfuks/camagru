@@ -27,6 +27,7 @@ body {
 .comment {
   font-size: 17px;
   display: block;
+  overflow-wrap: break-word;
 }
 #views {
   padding: .5vw;

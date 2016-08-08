@@ -46,9 +46,24 @@ send.onclick = function(event) {
     if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0) && xhr.responseText != null && xhr.responseText == "OK") {
       comment.value = "";
       modal.style.display = "none";
+      var div = document.querySelectorAll("[data-img='" + imagePath + "']")[0];
+      var span = document.createElement('span');
+      span.innerHTML = "you: " + escapeHtml(com);
+      span.setAttribute("class","comment");
+      div.appendChild(span);
     }
   };
   xhr.open("POST", "/forms/comment.php", true);
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.send("img=" + imagePath + "&comment=" + com);
 }
+
+
+function escapeHtml(unsafe) {
+    return unsafe
+         .replace(/&/g, "&amp;")
+         .replace(/</g, "&lt;")
+         .replace(/>/g, "&gt;")
+         .replace(/"/g, "&quot;")
+         .replace(/'/g, "&#039;");
+ }
