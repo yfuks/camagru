@@ -45,12 +45,12 @@ if ($montages.length > $imagePerPages) {
           <img id="img-modal"></img>
         </div>
         <div class="modal-footer">
-          <textarea id="comment" placeholder="comment" rows="5" cols="50" maxlength="255"></textarea>
-          <div id="buttons-like">
+          <textarea id="comment" placeholder="Comment..." rows="5" cols="50" maxlength="255"></textarea>
+          <!--div id="buttons-like">
             <img class="button-like" src="img/up.png"></img>
             <img class="button-dislike" src="img/down.png"></img>
-          </div>
-          <div class="button-send">Send</div>
+          </div-->
+          <div id="send-comment" class="button-send">Send</div>
         </div>
       </div>
     </div>

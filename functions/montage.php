@@ -92,4 +92,18 @@ function get_montages($start, $nb) {
     }
 }
 
+function comment($uid, $imgSrc, $comment) {
+  include_once '../setup/database.php';
+
+  try {
+      $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+      $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $query= $dbh->prepare("INSERT INTO comment(userid, galleryid, comment) SELECT :userid, id, :comment FROM gallery WHERE img=:img");
+      $query->execute(array(':userid' => $uid, ':comment' => $comment, ':img' => $imgSrc));
+      return (0);
+    } catch (PDOException $e) {
+      return ($e->getMessage());
+    }
+}
+
 ?>

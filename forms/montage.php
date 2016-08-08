@@ -63,8 +63,11 @@ imagecopymerge_alpha($destination, $copy, $destination_x, $destination_y, 0, 0, 
 $success = imagepng($destination, $monatageDir . $uiid . ".png");
 
 if ($success) {
-  add_montage($id, $uiid . '.png');
-  echo ($uiid . '.png');
+  if (($val = add_montage($id, $uiid . '.png')) === 0){
+      echo ($uiid . '.png');
+  } else {
+    echo $val;
+  }
 }
 
 function imagecopymerge_alpha($dst_im, $src_im, $dst_x, $dst_y, $src_x, $src_y, $src_w, $src_h, $pct){

@@ -44,6 +44,7 @@
   width: 100%;
   max-height: 550px;
   max-width: 680px;
+  margin-top: 10px;
 }
 
 .close:hover {
@@ -66,9 +67,11 @@
 #comment {
   height: 155px;
   max-height: 155px;
-  max-width: calc(100% - 70px);
-  width: calc(100% - 70px);
+  max-width: 100%;
+  width: 100%;
   font-size: 24px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .button-send {
