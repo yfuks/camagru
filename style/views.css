@@ -24,6 +24,10 @@ body {
   background-color: bisque;
   text-align: center;
 }
+.comment {
+  font-size: 17px;
+  display: block;
+}
 #views {
   padding: .5vw;
   font-size: 0;
@@ -42,7 +46,7 @@ body {
   width: 200px;
   margin: .5vw;
 }
-.img:hover, .close:hover {
+.icon:hover, .close:hover {
   cursor: pointer;
 }
 #views .img img {

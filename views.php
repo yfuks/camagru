@@ -30,7 +30,15 @@ if ($montages.length > $imagePerPages) {
             if ($montages[$i]['userid'] === $_SESSION['id']) {
               $class .= " removable";
             }
-            $gallery .= "<div class=\"img\"><img class=\"" . $class . "\" src=\"montage/" . $montages[$i]['img'] . "\"></img></div>";
+            $comments = get_comments($montages[$i]['img']);
+            $j = 0;
+            $commentsHTML = "";
+            while ($comments[$j] != null) {
+              echo $comments[$j];
+              $commentsHTML .= "<span class=\"comment\">" . htmlspecialchars($comments[$j]['username']) ." : " . htmlspecialchars($comments[$j]['comment']) . "</span>";
+              $j++;
+            }
+            $gallery .= "<div class=\"img\"><img class=\"" . $class . "\" src=\"montage/" . $montages[$i]['img'] . "\"></img>" . $commentsHTML . "</div>";
           }
           echo $gallery;
         }

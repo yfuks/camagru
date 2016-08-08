@@ -1,5 +1,5 @@
 var modal = document.getElementById('modal');
-var montage = document.getElementsByClassName("img");
+var montage = document.getElementsByClassName("icon");
 var span = document.getElementsByClassName("close")[0];
 var imgModal = document.getElementById('img-modal');
 var send = document.getElementById('send-comment');

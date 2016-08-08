@@ -106,4 +106,30 @@ function comment($uid, $imgSrc, $comment) {
     }
 }
 
+function get_comments($imgSrc) {
+  include './setup/database.php';
+
+  try {
+      $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+      $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $query= $dbh->prepare("SELECT comment, username FROM comment, users, gallery WHERE gallery.img=:img AND gallery.id=comment.galleryid AND users.id=gallery.userid");
+      $query->execute(array(':img' => $imgSrc));
+
+      $i = 0;
+      $tab = "";
+      while ($val = $query->fetch()) {
+        $tab[$i] = $val;
+        $i++;
+      }
+      $tab[$i] = null;
+      $query->closeCursor();
+
+      return ($tab);
+    } catch (PDOException $e) {
+      $ret = "";
+      $ret['error'] = $e->getMessage();
+      return ($ret);
+    }
+}
+
 ?>
