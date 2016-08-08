@@ -13,7 +13,7 @@ Premier projet Web ecole 42 [Voir le sujet](https://github.com/yfuks/camagru/blo
 - [X] let user remove is own montages in gallery.php
 - [ ] a gallery page with all images paginate
  - [ ] like/dislike montage
- - [ ] comment montage
+ - [X] comment montage
 
 bonus :
 - [X] Un aperçu des filtres sur la webcam
