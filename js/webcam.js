@@ -2,6 +2,8 @@ var video = document.querySelector("#webcam");
 var canvas = document.getElementById("canvas");
 var button = document.getElementById("pickImage");
 var miniatures = document.getElementById("miniatures");
+var inputFile = document.getElementById("take-picture");
+var pickFile = document.getElementById("pickFile");
 
 var cadre = document.getElementById("cadre");
 var cigarette = document.getElementById("cigarette");
@@ -14,7 +16,8 @@ if (navigator.getUserMedia) {
 
     button.onclick = function() {
       var image = new Image();
-
+      canvas.style.display = "none";
+      pickFile.style.display = "none";
 
       image.addEventListener("load", function() {
           if (file === "cadre.png") {
@@ -47,7 +50,7 @@ if (navigator.getUserMedia) {
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function() {
               if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0) && xhr.responseText == "OK") {
-                parent.removeChild(event.srcElement);
+                miniatures.removeChild(event.srcElement);
               }
             };
             xhr.open("POST", "../forms/removemontage.php", true);
@@ -88,4 +91,63 @@ function onCheckBoxChecked(checkbox) {
         hat.style.display = "block";
       }
   }
+  inputFile.style.display = "block";
+  if (inputFile.files.length) {
+    var image = new Image();
+    var img = new Image();
+    image.addEventListener("load", function() {
+        canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
+        canvas.getContext("2d").drawImage(image, 0, 0, image.width, image.height, 0, 0, 640, 480);
+        var data64Img = canvas.toDataURL(image.type);
+        window.URL.revokeObjectURL(file);
+
+        img.src = document.querySelector('input[name="img"]:checked').value; // Set source path
+        var split = img.src.split("/");
+        var file = split[split.length - 1];
+
+        if (file === "cadre.png") {
+          canvas.getContext("2d").drawImage(img, 0, 0, 1024, 768, 0, 0, 640, 480);
+        } else if (file === "cigarette.png") {
+          canvas.getContext("2d").drawImage(img, 0, 0, 1024, 768, 100, 200, 240, 180);
+        } else {
+          canvas.getContext("2d").drawImage(img, 0, 0, 1024, 768, 180, 0, 240, 180);
+        }
+
+        pickFile.onclick = function () {
+          sendMontage(data64Img, file);
+        }
+    }, false);
+    image.src = window.URL.createObjectURL(inputFile.files[0]);
+  }
+}
+
+
+function sendMontage(imgData64, filterImg) {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0) && xhr.responseText != null && xhr.responseText != "") {
+      var newImg = document.createElement("IMG");
+      newImg.className = "icon removable";
+      newImg.src = "montage/" + xhr.responseText;
+      newImg.onclick = function(event) {
+        var pathToImg = event.srcElement.src;
+        var srcTab = pathToImg.split('/');
+        var src = srcTab[srcTab.length - 1];
+
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0) && xhr.responseText == "OK") {
+            miniatures.removeChild(event.srcElement);
+          }
+        };
+        xhr.open("POST", "../forms/removemontage.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("src=" + src);
+      }
+      miniatures.appendChild(newImg);
+    }
+  };
+  xhr.open("POST", "/forms/montage.php", true);
+  xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  xhr.send("img=" + "../img/" + filterImg + "&f=" + imgData64);
 }

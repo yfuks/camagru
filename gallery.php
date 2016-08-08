@@ -33,7 +33,10 @@ $montages = get_all_montage();
             <img class="camera" src="img/camera.png"></img>
           </div>
           <canvas id="canvas" style="display:none;" width="640" height="480"></canvas>
-          <input type="file" id="take-picture" accept="image/*">
+          <div class="captureFile" id="pickFile">
+            <img class="camera" src="img/camera.png"></img>
+          </div>
+          <input type="file" id="take-picture" style="display:none;" accept="image/*">
         </div>
         <div class="side">
 			<div class="title">Montages</div>
@@ -62,5 +65,6 @@ $montages = get_all_montage();
   <?php if(isset($_SESSION['id'])) { ?>
   <script type="text/javascript" src="js/webcam.js"></script>
   <script type="text/javascript" src="js/drop.js"></script>
+  <script type="text/javascript" src="js/import.js"></script>
   <?php } ?>
 </HTML>

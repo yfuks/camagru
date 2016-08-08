@@ -64,7 +64,7 @@ body {
 	font-size: 25px;
   display: none;
 }
-.capture:hover {
+.capture:hover, .captureFile:hover{
 	cursor: pointer;
 	background-color: rgba(128, 154, 188, 0.5);
 }
@@ -98,4 +98,16 @@ body {
 }
 .removable:hover {
   cursor: pointer;
+}
+.captureFile {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background-color: rgba(162, 187, 202, 0.5);
+  text-align: center;
+  line-height: 50px;
+  bottom: 18px;
+  font-size: 25px;
+  display: none;
 }
