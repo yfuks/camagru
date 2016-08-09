@@ -132,4 +132,24 @@ function get_comments($imgSrc) {
     }
 }
 
+function get_userinfo_from_montage($imgSrc) {
+  include '../setup/database.php';
+
+  try {
+      $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+      $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $query= $dbh->prepare("SELECT mail, username FROM users, gallery WHERE gallery.img=:img AND users.id=gallery.userid");
+      $query->execute(array(':img' => $imgSrc));
+
+      $val = $query->fetch();
+      $query->closeCursor();
+
+      return ($val);
+    } catch (PDOException $e) {
+      $ret = "";
+      $ret['error'] = $e->getMessage();
+      return ($ret);
+    }
+}
+
 ?>

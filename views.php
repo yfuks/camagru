@@ -63,7 +63,6 @@ if ($montages.length > $imagePerPages) {
         </div>
         <div class="modal-footer">
           <textarea id="comment" placeholder="Comment..." rows="5" cols="50" maxlength="255"></textarea>
-
           <div id="send-comment" class="button-send">Send</div>
         </div>
       </div>
