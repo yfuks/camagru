@@ -2,6 +2,7 @@
 session_start();
 
 include_once("functions/montage.php");
+include_once("functions/like.php");
 
 $imagePerPages = 10;
 
@@ -42,9 +43,9 @@ if ($montages.length > $imagePerPages) {
               <img class=\"" . $class . "\" src=\"montage/" . $montages[$i]['img'] . "\"></img>
               <div id=\"buttons-like\">
                 <img class=\"button-like\" src=\"img/up.png\" data-image=\"". $montages[$i]['img'] ."\"></img>
-                <span class=\"nb-like\">0</span>
+                <span class=\"nb-like\" data-src=\"". $montages[$i]['img'] ."\">" . get_nb_likes($montages[$i]['img']) . "</span>
                 <img class=\"button-dislike\" src=\"img/down.png\" data-image=\"". $montages[$i]['img'] ."\"></img>
-                <span class=\"nb-dislike\">0</span>
+                <span class=\"nb-dislike\" data-src=\"". $montages[$i]['img'] ."\">" . get_nb_dislikes($montages[$i]['img']) . "</span>
               </div>"
               . $commentsHTML .
             "</div>";

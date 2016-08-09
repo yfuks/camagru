@@ -48,7 +48,7 @@ send.onclick = function(event) {
       modal.style.display = "none";
       var div = document.querySelectorAll("[data-img='" + imagePath + "']")[0];
       var span = document.createElement('span');
-      span.innerHTML = escapeHtml(xhr.responseText) + ": " + escapeHtml(com);
+      span.innerHTML = escapeHtml(xhr.responseText) + " : " + escapeHtml(com);
       span.setAttribute("class","comment");
       div.appendChild(span);
     }
