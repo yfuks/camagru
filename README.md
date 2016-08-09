@@ -11,9 +11,10 @@ Premier projet Web ecole 42 [Voir le sujet](https://github.com/yfuks/camagru/blo
 - [ ] check that no injection can be done
 - [X] add file importation
 - [X] let user remove is own montages in gallery.php
-- [ ] a gallery page with all images paginate
- - [ ] like/dislike montage
+- [ ] a gallery page images
+ - [X] like/dislike montage
  - [X] comment montage
+ - [ ] pagination
 
 bonus :
 - [X] Un aperçu des filtres sur la webcam
