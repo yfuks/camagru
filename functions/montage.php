@@ -53,6 +53,14 @@ function remove_montage($uid, $img) {
       }
       $query->closeCursor();
 
+      $query= $dbh->prepare("DELETE FROM `like` WHERE galleryid=:galleryid");
+      $query->execute(array(':galleryid' => $val['id']));
+      $query->closeCursor();
+
+      $query= $dbh->prepare("DELETE FROM comment WHERE galleryid=:galleryid");
+      $query->execute(array(':galleryid' => $val['id']));
+      $query->closeCursor();
+
       $query= $dbh->prepare("DELETE FROM gallery WHERE img=:img AND userid=:userid");
       $query->execute(array(':img' => $img, ':userid' => $uid));
       $query->closeCursor();
