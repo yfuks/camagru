@@ -16,6 +16,7 @@ label {
   margin: auto;
   background-color: white;
   padding: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
 #blue {
   align-content: center;
@@ -35,26 +36,41 @@ input {
   font-size: 14px;
 }
 input[type="submit"] {
+  height: 40px;
+  background-color: bisque;
+  border: 2px solid bisque;
+  color: white;
+  text-align: center;
   margin-right: auto;
   margin-left: auto;
   position: absolute;
-  top: 235px;
+  top: 214px;
   left: 3px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+input[type="submit"]:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
 }
 #header {
   width: 100%;
   height: 80px;
   background-color: bisque;
   text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
 .button {
   float: right;
-  height: 80px;
+  height: 76px;
   width: 100px;
   line-height: 70px;
+  border: 2px solid bisque;
+  color: white;
 }
 .button:hover {
-  background-color: antiquewhite;
+  color: #aaaaaa;
   cursor: pointer;
 }
 .footer {

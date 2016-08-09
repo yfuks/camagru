@@ -6,15 +6,18 @@ body {
   height: 80px;
   background-color: bisque;
   text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
 .button {
   float: right;
-  height: 80px;
+  height: 76px;
   width: 100px;
   line-height: 70px;
+  border: 2px solid bisque;
+  color: white;
 }
 .button:hover {
-  background-color: antiquewhite;
+  color: #aaaaaa;
   cursor: pointer;
 }
 .footer {
@@ -74,6 +77,10 @@ body {
 }
 .icon {
   width: 100%;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
 }
 #hat {
   position: absolute;
@@ -98,6 +105,7 @@ body {
 }
 .removable:hover {
   cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6),0 6px 20px 0 rgba(0,0,0,0.39);
 }
 .captureFile {
   position: absolute;

@@ -18,3 +18,4 @@ Premier projet Web ecole 42 [Voir le sujet](https://github.com/yfuks/camagru/blo
 bonus :
 - [X] Un aperçu des filtres sur la webcam
 - [ ] [css filter](http://www.w3schools.com/cssref/css3_pr_filter.asp)
+- [ ] Repasser sur le css (c'est moche..)

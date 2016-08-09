@@ -34,11 +34,20 @@ if ($montages.length > $imagePerPages) {
             $j = 0;
             $commentsHTML = "";
             while ($comments[$j] != null) {
-              echo $comments[$j];
               $commentsHTML .= "<span class=\"comment\">" . htmlspecialchars($comments[$j]['username']) ." : " . htmlspecialchars($comments[$j]['comment']) . "</span>";
               $j++;
             }
-            $gallery .= "<div class=\"img\" data-img=\"" . $montages[$i]['img'] . "\"><img class=\"" . $class . "\" src=\"montage/" . $montages[$i]['img'] . "\"></img>" . $commentsHTML . "</div>";
+            $gallery .= "
+            <div class=\"img\" data-img=\"" . $montages[$i]['img'] . "\">
+              <img class=\"" . $class . "\" src=\"montage/" . $montages[$i]['img'] . "\"></img>
+              <div id=\"buttons-like\">
+                <img class=\"button-like\" src=\"img/up.png\" data-image=\"". $montages[$i]['img'] ."\"></img>
+                <span class=\"nb-like\">0</span>
+                <img class=\"button-dislike\" src=\"img/down.png\" data-image=\"". $montages[$i]['img'] ."\"></img>
+                <span class=\"nb-dislike\">0</span>
+              </div>"
+              . $commentsHTML .
+            "</div>";
           }
           echo $gallery;
         }
@@ -54,10 +63,7 @@ if ($montages.length > $imagePerPages) {
         </div>
         <div class="modal-footer">
           <textarea id="comment" placeholder="Comment..." rows="5" cols="50" maxlength="255"></textarea>
-          <!--div id="buttons-like">
-            <img class="button-like" src="img/up.png"></img>
-            <img class="button-dislike" src="img/down.png"></img>
-          </div-->
+
           <div id="send-comment" class="button-send">Send</div>
         </div>
       </div>
@@ -66,4 +72,5 @@ if ($montages.length > $imagePerPages) {
     <?php include('fragments/footer.php') ?>
   </body>
   <script type="text/javascript" src="js/modal.js"></script>
+  <script type="text/javascript" src="js/like.js"></script>
 </HTML>

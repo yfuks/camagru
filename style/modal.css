@@ -55,15 +55,6 @@
   font-size: 24px;
 }
 
-.button-like, .button-dislike {
-    width: 25px;
-    height: 25px;
-}
-
-.button-like:hover, .button-dislike:hover {
-    cursor: pointer;
-}
-
 #comment {
   height: 155px;
   max-height: 155px;
@@ -84,16 +75,14 @@
   margin-right: auto;
   text-align: center;
   line-height: 40px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
 }
 
 .button-send:hover {
   background-color: white;
   color: black;
   cursor: pointer;
-}
-
-#buttons-like {
-  display: inline;
 }
 
 @-webkit-keyframes animatetop {

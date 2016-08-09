@@ -6,15 +6,18 @@ body {
   height: 80px;
   background-color: bisque;
   text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
 .button {
   float: right;
-  height: 80px;
+  height: 76px;
   width: 100px;
   line-height: 70px;
+  border: 2px solid bisque;
+  color: white;
 }
 .button:hover {
-  background-color: antiquewhite;
+  color: #aaaaaa;
   cursor: pointer;
 }
 .footer {
@@ -28,6 +31,10 @@ body {
   font-size: 17px;
   display: block;
   overflow-wrap: break-word;
+}
+.nb-like, .nb-dislike {
+  font-size: 14px;
+  margin-right: 5px;
 }
 #views {
   padding: .5vw;
@@ -50,9 +57,30 @@ body {
 .icon:hover, .close:hover {
   cursor: pointer;
 }
-#views .img img {
+#buttons-like {
+  display: inline;
+}
+.button-like, .button-dislike {
+    width: 25px;
+    height: 25px;
+    margin-top: 5px;
+}
+.button-like {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.button-like:hover, .button-dislike:hover {
+    cursor: pointer;
+}
+#views .img .icon {
   width: 100%;
   height: auto;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+#views .img .icon:hover {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6),0 6px 20px 0 rgba(0,0,0,0.39);
 }
 @media screen and (max-width: 400px) {
   #views .img { margin: 0; }
