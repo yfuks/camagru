@@ -43,12 +43,12 @@ send.onclick = function(event) {
 
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0) && xhr.responseText != null && xhr.responseText == "OK") {
+    if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0) && xhr.responseText != null && xhr.responseText != "") {
       comment.value = "";
       modal.style.display = "none";
       var div = document.querySelectorAll("[data-img='" + imagePath + "']")[0];
       var span = document.createElement('span');
-      span.innerHTML = "you: " + escapeHtml(com);
+      span.innerHTML = escapeHtml(xhr.responseText) + ": " + escapeHtml(com);
       span.setAttribute("class","comment");
       div.appendChild(span);
     }
