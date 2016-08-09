@@ -77,11 +77,15 @@ body {
   width: 100%;
   height: auto;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
+  -webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+  -webkit-filter: grayscale(0);
+	filter: grayscale(0);
 }
 #views .img .icon:hover {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6),0 6px 20px 0 rgba(0,0,0,0.39);
+    -webkit-filter: grayscale(100%);
+	   filter: grayscale(100%));
 }
 @media screen and (max-width: 400px) {
   #views .img { margin: 0; }
