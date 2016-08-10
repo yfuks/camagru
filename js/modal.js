@@ -8,11 +8,13 @@ var comment = document.getElementById('comment');
 var imageSelected = null;
 
 for (var i=0; i < montage.length; i++) {
-  montage[i].onclick = function(event) {
-    modal.style.display = "block";
-    imgModal.src = event.srcElement.src;
-    imageSelected = event.srcElement.src;
-  }
+  montage[i].onclick = showModal;
+}
+
+function showModal(event) {
+  modal.style.display = "block";
+  imgModal.src = event.srcElement.src;
+  imageSelected = event.srcElement.src;
 }
 
 // When the user clicks on the button, open the modal
@@ -48,7 +50,7 @@ send.onclick = function(event) {
       modal.style.display = "none";
       var div = document.querySelectorAll("[data-img='" + imagePath + "']")[0];
       var span = document.createElement('span');
-      span.innerHTML = escapeHtml(xhr.responseText) + " : " + escapeHtml(com);
+      span.innerHTML = escapeHtml(xhr.responseText) + ": " + escapeHtml(com);
       span.setAttribute("class","comment");
       div.appendChild(span);
     }

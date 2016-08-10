@@ -86,7 +86,37 @@ function get_montages($start, $nb) {
 
       $i = 0;
       $tab = null;
-      while ($val = $query->fetch()) {
+      while (($val = $query->fetch()) && $i < $nb) {
+        $tab[$i] = $val;
+        $i++;
+      }
+      $query->closeCursor();
+
+      return ($tab);
+    } catch (PDOException $e) {
+      $s;
+      $s['error'] = $e->getMessage();
+      return ($s);
+    }
+}
+
+function get_montages2($start, $nb) {
+  include_once '../setup/database.php';
+
+  try {
+      if ($start < 0) {
+        $start = 0;
+      }
+      $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+      $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $query= $dbh->prepare("SELECT userid, img, id FROM gallery WHERE id > :id ORDER BY id ASC LIMIT :lim");
+      $query->bindValue(':lim', $nb + 1, PDO::PARAM_INT);
+      $query->bindValue(':id', $start, PDO::PARAM_INT);
+      $query->execute();
+
+      $i = 0;
+      $tab = null;
+      while (($val = $query->fetch()) && $i < $nb) {
         $tab[$i] = $val;
         $i++;
       }
@@ -116,6 +146,32 @@ function comment($uid, $imgSrc, $comment) {
 
 function get_comments($imgSrc) {
   include './setup/database.php';
+
+  try {
+      $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+      $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $query= $dbh->prepare("SELECT comment, username FROM comment, users, gallery WHERE gallery.img=:img AND gallery.id=comment.galleryid AND users.id=gallery.userid");
+      $query->execute(array(':img' => $imgSrc));
+
+      $i = 0;
+      $tab = "";
+      while ($val = $query->fetch()) {
+        $tab[$i] = $val;
+        $i++;
+      }
+      $tab[$i] = null;
+      $query->closeCursor();
+
+      return ($tab);
+    } catch (PDOException $e) {
+      $ret = "";
+      $ret['error'] = $e->getMessage();
+      return ($ret);
+    }
+}
+
+function get_comments2($imgSrc) {
+  include '../setup/database.php';
 
   try {
       $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);

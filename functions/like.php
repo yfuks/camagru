@@ -59,8 +59,46 @@ function get_nb_likes($img) {
     }
 }
 
+function get_nb_likes2($img) {
+  include '../setup/database.php';
+  try {
+      $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+      $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $query= $dbh->prepare("SELECT type FROM `like`, gallery WHERE `like`.galleryid=gallery.id AND gallery.img=:img AND `like`.type='L'");
+      $query->execute(array(':img' => $img));
+
+      $count = 0;
+      while ($val = $query->fetch()) {
+        $count++;
+      }
+      $query->closeCursor();
+      return ($count);
+    } catch (PDOException $e) {
+      return ($e->getMessage());
+    }
+}
+
 function get_nb_dislikes($img) {
   include './setup/database.php';
+  try {
+      $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+      $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $query= $dbh->prepare("SELECT type FROM `like`, gallery WHERE `like`.galleryid=gallery.id AND gallery.img=:img AND `like`.type='D'");
+      $query->execute(array(':img' => $img));
+
+      $count = 0;
+      while ($val = $query->fetch()) {
+        $count++;
+      }
+      $query->closeCursor();
+      return ($count);
+    } catch (PDOException $e) {
+      return ($e->getMessage());
+    }
+}
+
+function get_nb_dislikes2($img) {
+  include '../setup/database.php';
   try {
       $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
       $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

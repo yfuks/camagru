@@ -4,13 +4,15 @@ session_start();
 include_once("functions/montage.php");
 include_once("functions/like.php");
 
-$imagePerPages = 10;
+$imagePerPages = 5;
 
 $montages = get_montages(0, $imagePerPages);
 $more = false;
-if ($montages.length > $imagePerPages) {
+if (count($montages) >= $imagePerPages) {
   $more = true;
+  $lastMontageId = $montages[count($montages) - 1]['id'];
 }
+
 ?>
 <!DOCTYPE html>
 <HTML>
@@ -35,7 +37,7 @@ if ($montages.length > $imagePerPages) {
             $j = 0;
             $commentsHTML = "";
             while ($comments[$j] != null) {
-              $commentsHTML .= "<span class=\"comment\">" . htmlspecialchars($comments[$j]['username']) ." : " . htmlspecialchars($comments[$j]['comment']) . "</span>";
+              $commentsHTML .= "<span class=\"comment\">" . htmlspecialchars($comments[$j]['username']) .": " . htmlspecialchars($comments[$j]['comment']) . "</span>";
               $j++;
             }
             $gallery .= "
@@ -68,9 +70,12 @@ if ($montages.length > $imagePerPages) {
         </div>
       </div>
     </div>
-    <div>
+    <?php if ($more == true) { ?>
+    <div id="load-more" onclick="loadMore(<?php echo($lastMontageId) ?>, <?php echo($imagePerPages) ?>)">... LOAD MORE</div>
+    <?php } ?>
     <?php include('fragments/footer.php') ?>
   </body>
   <script type="text/javascript" src="js/modal.js"></script>
   <script type="text/javascript" src="js/like.js"></script>
+  <script type="text/javascript" src="js/loadMore.js"></script>
 </HTML>
