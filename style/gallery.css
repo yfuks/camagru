@@ -121,3 +121,18 @@ body {
   font-size: 25px;
   display: none;
 }
+@media screen and (max-width: 900px) {
+  .main { width: 400px; }
+  .capture { top: 365px; } /* 180 */
+  #cadre { width: 400px; height: 300px; }
+  .body { width: 640px; }
+  #cigarette { top: 233px; width: 175px; height: 135px; left: 44px;}
+  #hat {top: 115px; width: 145px; height: 115px; left: 115px;}
+  #canvas { width: 400px;}
+  .captureFile {top: 668px;}
+}
+@media screen and (max-width: 660px) {
+  .body {display: inline; width: 450px;}
+  .side {width: 100%; max-width: 400px; margin-right: auto; margin-left: auto;}
+  .main {margin-left: auto; margin-right: auto;}
+}
