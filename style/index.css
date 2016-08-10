@@ -1,6 +1,7 @@
 body {
   margin: 0;
   background-color: floralwhite;
+  font-family: monospace;
 }
 label {
   font-size: 19px;

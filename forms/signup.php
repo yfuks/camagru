@@ -10,7 +10,11 @@ $password = $_POST['password'];
 
 $_SESSION['error'] = null;
 
-signup($mail, $username, $password, $_SERVER['HTTP_HOST']);
+if ($mail != "" && $mail != null && $username != "" && $username != null && $password  != "" && $password  != null) {
+  signup($mail, $username, $password, $_SERVER['HTTP_HOST']);
+} else {
+  $_SESSION['error'] = "You need to fill all fields";
+}
 
 header("Location: ../signup.php");
 ?>
