@@ -16,7 +16,7 @@ for (var i=0; i < likes.length; i++) {
         current_user_add_like(src);
       }
     };
-    xhr.open("POST", "/forms/like.php", true);
+    xhr.open("POST", "./forms/like.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send("img=" + src + "&type=L");
   }
@@ -34,7 +34,7 @@ for (var i=0; i < dislikes.length; i++) {
         current_user_add_dislike(src);
       }
     };
-    xhr.open("POST", "/forms/like.php", true);
+    xhr.open("POST", "./forms/like.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send("img=" + src + "&type=D");
   }

@@ -14,7 +14,6 @@ function loadMore(lastMontageId, imagePerPages) {
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0) && xhr.responseText != null && xhr.responseText != "") {
       var responseJSON = JSON.parse(xhr.responseText);
-      console.log(responseJSON);
       last = responseJSON[responseJSON.length - 1]['id'];
       for (var i = 0; responseJSON[i]; i++) {
         var div = document.createElement("div");
@@ -42,7 +41,7 @@ function loadMore(lastMontageId, imagePerPages) {
       }
     }
   };
-  xhr.open("POST", "/forms/getmontages.php", true);
+  xhr.open("POST", "./forms/getmontages.php", true);
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.send("id=" + lastMontageId + "&nb=" + imagePerPages);
 }
@@ -73,7 +72,7 @@ function onLike(srcElement) {
       current_user_add_like(src);
     }
   };
-  xhr.open("POST", "/forms/like.php", true);
+  xhr.open("POST", "./forms/like.php", true);
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.send("img=" + src + "&type=L");
 }
@@ -89,7 +88,7 @@ function onDislike(srcElement) {
       current_user_add_dislike(src);
     }
   };
-  xhr.open("POST", "/forms/like.php", true);
+  xhr.open("POST", "./forms/like.php", true);
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.send("img=" + src + "&type=D");
 }

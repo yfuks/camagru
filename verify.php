@@ -20,7 +20,7 @@ include_once './functions/verify.php';
       </strong>
     <?php } else { ?>
       <strong>
-        An error have occured
+        Account not found
       </strong>
     <?php } ?>
     </div>

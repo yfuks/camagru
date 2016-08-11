@@ -55,7 +55,7 @@ send.onclick = function(event) {
       div.appendChild(span);
     }
   };
-  xhr.open("POST", "/forms/comment.php", true);
+  xhr.open("POST", "./forms/comment.php", true);
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.send("img=" + imagePath + "&comment=" + com);
 }

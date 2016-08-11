@@ -16,6 +16,12 @@ if ($mail == "" || $mail == null || $username == "" || $username == null || $pas
   return;
 }
 
+if(!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+  $_SESSION['error'] = "You need to enter a valid email";
+  header("Location: ../signup.php");
+  return;
+}
+
 if (strlen($username) > 50 || strlen($username) < 3) {
   $_SESSION['error'] = "Username should be beetween 3 and 50 characters";
   header("Location: ../signup.php");
@@ -28,7 +34,9 @@ if (strlen($password) < 3) {
   return;
 }
 
-signup($mail, $username, $password, $_SERVER['HTTP_HOST']);
+$url = $_SERVER['HTTP_HOST'] . str_replace("/forms/signup.php", "", $_SERVER['REQUEST_URI']);
+
+signup($mail, $username, $password, $url);
 
 header("Location: ../signup.php");
 ?>

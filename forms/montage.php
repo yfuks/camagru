@@ -16,6 +16,10 @@ $data = base64_decode($filter);
 
 $uiid = uniqid();
 
+if (!file_exists($monatageDir)) {
+  mkdir($monatageDir);
+}
+
 file_put_contents($monatageDir . $uiid . '.png', $data);
 
 // On charge d'abord les images

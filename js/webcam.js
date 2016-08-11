@@ -9,7 +9,7 @@ var cadre = document.getElementById("cadre");
 var cigarette = document.getElementById("cigarette");
 var hat = document.getElementById("hat");
 
-navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+navigator.getUserMedia = navigator.getUserMedia || mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
 
 if (navigator.getUserMedia) {
     navigator.getUserMedia({video: true}, handleVideo, videoError);
@@ -53,14 +53,14 @@ if (navigator.getUserMedia) {
                 miniatures.removeChild(event.srcElement);
               }
             };
-            xhr.open("POST", "../forms/removemontage.php", true);
+            xhr.open("POST", "./forms/removemontage.php", true);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             xhr.send("src=" + src);
           }
           miniatures.appendChild(newImg);
     		}
   	  };
-      xhr.open("POST", "/forms/montage.php", true);
+      xhr.open("POST", "./forms/montage.php", true);
       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
       xhr.send("img=" + "../img/" + file + "&f=" + img);
 		};
@@ -140,14 +140,14 @@ function sendMontage(imgData64, filterImg) {
             miniatures.removeChild(event.srcElement);
           }
         };
-        xhr.open("POST", "../forms/removemontage.php", true);
+        xhr.open("POST", "./forms/removemontage.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.send("src=" + src);
       }
       miniatures.appendChild(newImg);
     }
   };
-  xhr.open("POST", "/forms/montage.php", true);
+  xhr.open("POST", "./forms/montage.php", true);
   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   xhr.send("img=" + "../img/" + filterImg + "&f=" + imgData64);
 }

@@ -19,11 +19,11 @@ $montages = get_all_montage();
         <div class="main">
     		  <div class="select">
       			<img class="thumbnail" src="img/cadre.png"></img>
-      			<input id="cadre.png" type="radio" name="img" value="../img/cadre.png" onclick="onCheckBoxChecked(this)">
+      			<input id="cadre.png" type="radio" name="img" value="./img/cadre.png" onclick="onCheckBoxChecked(this)">
       			<img class="thumbnail" src="img/cigarette.png"></img>
-      			<input id="cigarette.png" type="radio" name="img" value="../img/cigarette.png" onclick="onCheckBoxChecked(this)">
+      			<input id="cigarette.png" type="radio" name="img" value="./img/cigarette.png" onclick="onCheckBoxChecked(this)">
       			<img class="thumbnail" src="img/hat.png"></img>
-      			<input id="hat.png" type="radio" name="img" value="../img/hat.png" onclick="onCheckBoxChecked(this)">
+      			<input id="hat.png" type="radio" name="img" value="./img/hat.png" onclick="onCheckBoxChecked(this)">
     		  </div>
           <video width="100%" autoplay="true" id="webcam"></video>
           <img id="hat" style="display:none;" src="img/hat.png"></img>
@@ -49,7 +49,7 @@ $montages = get_all_montage();
               if ($montages[$i]['userid'] === $_SESSION['id']) {
                 $class .= " removable";
               }
-              $gallery .= "<img class=\"" . $class . "\" src=\"montage/" . $montages[$i]['img'] . "\" data-userid=\"" . $montages[$i]['userid'] . "\"></img>";
+              $gallery .= "<img class=\"" . $class . "\" src=\"./montage/" . $montages[$i]['img'] . "\" data-userid=\"" . $montages[$i]['userid'] . "\"></img>";
             }
             echo $gallery;
           }
