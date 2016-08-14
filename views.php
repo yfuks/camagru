@@ -65,8 +65,8 @@ if ($montages != "" && array_key_exists("more", $montages)) {
           <img id="img-modal"></img>
         </div>
         <div class="modal-footer">
-          <textarea id="comment" placeholder="Comment..." rows="5" cols="50" maxlength="255"></textarea>
-          <div id="send-comment" class="button-send">Send</div>
+          <textarea <?php if (!$_SESSION['id']) echo "disabled" ?> id="comment" placeholder="Comment..." rows="5" cols="50" maxlength="255"></textarea>
+          <div <?php if (!$_SESSION['id']) echo "disabled=\"true\"" ?> id="send-comment" class="button-send <?php if (!$_SESSION['id']) echo "disabled" ?>">Send</div>
         </div>
       </div>
     </div>
