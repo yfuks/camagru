@@ -37,7 +37,6 @@ if (count($montages) >= $imagePerPages) {
             $j = 0;
             $commentsHTML = "";
             while ($comments[$j] != null) {
-              print_r($comments[$j]);
               $commentsHTML .= "<span class=\"comment\">" . htmlspecialchars($comments[$j]['username']) .": " . htmlspecialchars($comments[$j]['comment']) . "</span>";
               $j++;
             }
