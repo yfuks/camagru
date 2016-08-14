@@ -46,6 +46,8 @@ navigator.mediaDevices.getUserMedia(constraints)
 function handleVideo(stream) {
     video.src = window.URL.createObjectURL(stream);
     cameraAvailable = true;
+    video.style.display = "block";
+    notAvailable.style.display = "none";
     button.onclick = function() {
       var image = new Image();
       canvas.style.display = "none";

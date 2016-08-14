@@ -121,6 +121,9 @@ body {
   font-size: 25px;
   display: none;
 }
+#webcam {
+  display: none;
+}
 #camera-not-available {
   width: 100%;
   text-align: center;
@@ -129,7 +132,6 @@ body {
   color: white;
   font-size: 40px;
   line-height: 480px;
-  display: none;
   margin-bottom: 3px;
 }
 @media screen and (max-width: 900px) {
