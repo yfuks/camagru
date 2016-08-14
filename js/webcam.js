@@ -9,7 +9,7 @@ var cadre = document.getElementById("cadre");
 var cigarette = document.getElementById("cigarette");
 var hat = document.getElementById("hat");
 
-navigator.getUserMedia = navigator.getUserMedia || mediaDevices.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+navigator.getUserMedia = navigator.getUserMedia || (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
 
 if (navigator.getUserMedia) {
     navigator.getUserMedia({video: true}, handleVideo, videoError);

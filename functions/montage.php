@@ -150,7 +150,7 @@ function get_comments($imgSrc) {
   try {
       $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
       $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      $query= $dbh->prepare("SELECT comment, username FROM comment, users, gallery WHERE gallery.img=:img AND gallery.id=comment.galleryid AND users.id=gallery.userid");
+      $query= $dbh->prepare("SELECT c.comment, u.username FROM comment AS c, users AS u, gallery AS g WHERE g.img=:img AND g.id=c.galleryid AND c.userid=u.id");
       $query->execute(array(':img' => $imgSrc));
 
       $i = 0;

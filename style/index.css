@@ -47,13 +47,13 @@ input[type="submit"] {
   position: absolute;
   top: 214px;
   left: 3px;
-  -webkit-transition-duration: 0.4s; /* Safari */
-  transition-duration: 0.4s;
 }
 input[type="submit"]:hover {
   background-color: white;
   color: black;
   cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
 }
 #header {
   width: 100%;
