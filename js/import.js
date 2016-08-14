@@ -45,14 +45,14 @@ function sendMontage(imgData64, filterImg) {
       newImg.className = "icon removable";
       newImg.src = "montage/" + xhr.responseText;
       newImg.onclick = function(event) {
-        var pathToImg = event.srcElement.src;
+        var pathToImg = (event.srcElement && event.srcElement.src) || (event.target && event.target.src);
         var srcTab = pathToImg.split('/');
         var src = srcTab[srcTab.length - 1];
 
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
           if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0) && xhr.responseText == "OK") {
-            miniatures.removeChild(event.srcElement);
+            miniatures.removeChild(event.srcElement || event.target);
           }
         };
         xhr.open("POST", "./forms/removemontage.php", true);
