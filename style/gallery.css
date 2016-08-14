@@ -121,6 +121,9 @@ body {
   font-size: 25px;
   display: none;
 }
+.montage-div {
+  position: relative;
+}
 #webcam {
   display: none;
 }
