@@ -86,8 +86,12 @@ function get_montages($start, $nb) {
 
       $i = 0;
       $tab = null;
-      while (($val = $query->fetch()) && $i < $nb) {
-        $tab[$i] = $val;
+      while (($val = $query->fetch())) {
+        if ($i >= $nb) {
+          $tab['more'] = true;
+        } else {
+          $tab[$i] = $val;
+        }
         $i++;
       }
       $query->closeCursor();
@@ -116,8 +120,12 @@ function get_montages2($start, $nb) {
 
       $i = 0;
       $tab = null;
-      while (($val = $query->fetch()) && $i < $nb) {
-        $tab[$i] = $val;
+      while (($val = $query->fetch())) {
+        if ($i >= $nb) {
+          $tab['more'] = true;
+        } else {
+          $tab[$i] = $val;
+        }
         $i++;
       }
       $query->closeCursor();
@@ -176,7 +184,7 @@ function get_comments2($imgSrc) {
   try {
       $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
       $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      $query= $dbh->prepare("SELECT comment, username FROM comment, users, gallery WHERE gallery.img=:img AND gallery.id=comment.galleryid AND users.id=gallery.userid");
+      $query= $dbh->prepare("SELECT c.comment, u.username FROM comment AS c, users AS u, gallery AS g WHERE g.img=:img AND g.id=c.galleryid AND c.userid=u.id");
       $query->execute(array(':img' => $imgSrc));
 
       $i = 0;

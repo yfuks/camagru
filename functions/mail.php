@@ -45,7 +45,7 @@ function send_forget_mail($toAddr, $toUsername, $password) {
   mail($toAddr, $subject, $message, $headers);
 }
 
-function send_comment_mail($toAddr, $toUsername, $comment, $fromUsername, $img) {
+function send_comment_mail($toAddr, $toUsername, $comment, $fromUsername, $img, $ip) {
   $subject = "[CAMAGRU] - New comment";
 
   $headers  = 'MIME-Version: 1.0' . "\r\n";
@@ -60,7 +60,7 @@ function send_comment_mail($toAddr, $toUsername, $comment, $fromUsername, $img) 
     <body>
       Hello ' . htmlspecialchars($toUsername) . ' </br>
       A user just commented one of your montage</br>
-      <img src="http://' . $ip . '\/montage/' . $img . '" style="width: 250px;height: 250px"></img>
+      <img src="http://' . $ip . '/montage/' . $img . '" style="width: 388px;height: 291px;display: block;margin: 20px;"></img>
       <span>' . htmlspecialchars($fromUsername) . ': ' . htmlspecialchars($comment) . '</span>
     </body>
   </html>

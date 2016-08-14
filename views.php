@@ -8,9 +8,10 @@ $imagePerPages = 5;
 
 $montages = get_montages(0, $imagePerPages);
 $more = false;
-if (count($montages) >= $imagePerPages) {
+$lastMontageId = 0;
+if (array_key_exists("more", $montages)) {
   $more = true;
-  $lastMontageId = $montages[count($montages) - 1]['id'];
+  $lastMontageId = $montages[count($montages) - 2]['id'];
 }
 
 ?>

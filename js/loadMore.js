@@ -13,6 +13,9 @@ function loadMore(lastMontageId, imagePerPages) {
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0) && xhr.responseText != null && xhr.responseText != "") {
+      if (xhr.responseText === "KO") {
+        return;
+      }
       var responseJSON = JSON.parse(xhr.responseText);
       last = responseJSON[responseJSON.length - 1]['id'];
       for (var i = 0; responseJSON[i]; i++) {
@@ -36,7 +39,7 @@ function loadMore(lastMontageId, imagePerPages) {
         div.setAttribute("data-img", responseJSON[i]['img']);
         views.appendChild(div);
       }
-      if(responseJSON.length < imagePerPages) {
+      if (typeof(responseJSON['more']) === 'undefined') {
         loadMoreButton.style.display = "none";
       }
     }

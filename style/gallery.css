@@ -121,6 +121,17 @@ body {
   font-size: 25px;
   display: none;
 }
+#camera-not-available {
+  width: 100%;
+  text-align: center;
+  height: 480px;
+  background-color: rgba(0,0,0,0.1);
+  color: white;
+  font-size: 40px;
+  line-height: 480px;
+  display: none;
+  margin-bottom: 3px;
+}
 @media screen and (max-width: 900px) {
   .main { width: 400px; }
   .capture { top: 365px; } /* 180 */
@@ -130,6 +141,7 @@ body {
   #hat {top: 115px; width: 145px; height: 115px; left: 115px;}
   #canvas { width: 400px;}
   .captureFile {top: 668px;}
+  #camera-not-available {height: 300px; line-height: 160px}
 }
 @media screen and (max-width: 660px) {
   .body {display: inline; width: 450px;}

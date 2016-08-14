@@ -4,6 +4,7 @@ var button = document.getElementById("pickImage");
 var miniatures = document.getElementById("miniatures");
 var inputFile = document.getElementById("take-picture");
 var pickFile = document.getElementById("pickFile");
+var notAvailable = document.getElementById("camera-not-available");
 
 var cadre = document.getElementById("cadre");
 var cigarette = document.getElementById("cigarette");
@@ -71,7 +72,9 @@ function handleVideo(stream) {
 }
 
 function videoError(e) {
-    // do something
+    navigator.getUserMedia = null;
+    video.style.display = "none";
+    notAvailable.style.display = "block";
 }
 
 function onCheckBoxChecked(checkbox) {

@@ -26,6 +26,7 @@ $montages = get_all_montage();
       			<input id="hat.png" type="radio" name="img" value="./img/hat.png" onclick="onCheckBoxChecked(this)">
     		  </div>
           <video width="100%" autoplay="true" id="webcam"></video>
+          <div id="camera-not-available">CAMERA NOT AVAILABLE</div>
           <img id="hat" style="display:none;" src="img/hat.png"></img>
           <img id="cigarette" style="display:none;" src="img/cigarette.png"></img>
           <img id="cadre" style="display:none;" src="img/cadre.png"></img>
