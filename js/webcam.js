@@ -10,11 +10,42 @@ var cadre = document.getElementById("cadre");
 var cigarette = document.getElementById("cigarette");
 var hat = document.getElementById("hat");
 
-navigator.getUserMedia = navigator.getUserMedia || (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+var cameraAvailable = false;
 
-if (navigator.getUserMedia) {
-    navigator.getUserMedia({video: true}, handleVideo, videoError);
+var promisifiedOldGUM = function(constraints) {
 
+  var getUserMedia = (navigator.getUserMedia ||
+      navigator.webkitGetUserMedia ||
+      navigator.mozGetUserMedia ||
+      navigator.msGetUserMedia ||
+      navigator.oGetUserMedia);
+
+  if(!getUserMedia) {
+    return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
+  }
+
+  return new Promise(function(resolve, reject) {
+    getUserMedia.call(navigator, constraints, resolve, reject);
+  });
+}
+
+if(navigator.mediaDevices === undefined) {
+  navigator.mediaDevices = {};
+}
+
+if(navigator.mediaDevices.getUserMedia === undefined) {
+  navigator.mediaDevices.getUserMedia = promisifiedOldGUM;
+}
+
+var constraints = {video: true};
+
+navigator.mediaDevices.getUserMedia(constraints)
+.then(handleVideo)
+.catch(videoError);
+
+function handleVideo(stream) {
+    video.src = window.URL.createObjectURL(stream);
+    cameraAvailable = true;
     button.onclick = function() {
       var image = new Image();
       canvas.style.display = "none";
@@ -67,18 +98,14 @@ if (navigator.getUserMedia) {
 		};
 }
 
-function handleVideo(stream) {
-    video.src = window.URL.createObjectURL(stream);
-}
-
 function videoError(e) {
-    navigator.getUserMedia = null;
+    cameraAvailable = false;
     video.style.display = "none";
     notAvailable.style.display = "block";
 }
 
 function onCheckBoxChecked(checkbox) {
-  if (navigator.getUserMedia) {
+  if (cameraAvailable) {
       button.style.display = "block";
       if (checkbox.id === "cadre.png") {
         cadre.style.display = "block";
