@@ -3,7 +3,6 @@ var parent = document.getElementById("miniatures");
 
 for (var i=0; i < montage.length; i++) {
   montage[i].onclick = function(event) {
-    console.log(event.target);
     var pathToImg = (event.srcElement && event.srcElement.src) || (event.target && event.target.src);
     var srcTab = pathToImg.split('/');
     var src = srcTab[srcTab.length - 1];
