@@ -6,7 +6,7 @@ var clientDislikes = [];
 
 for (var i=0; i < likes.length; i++) {
   likes[i].onclick = function(event) {
-    var src = event.srcElement.getAttribute('data-image');
+    var src = (event.srcElement && event.srcElement.getAttribute('data-image') || event.target.getAttribute('data-image'));
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
       if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0) && xhr.responseText != null && xhr.responseText == "ADD") {
@@ -24,7 +24,7 @@ for (var i=0; i < likes.length; i++) {
 
 for (var i=0; i < dislikes.length; i++) {
   dislikes[i].onclick = function(event) {
-    var src = event.srcElement.getAttribute('data-image');
+    var src = (event.srcElement && event.srcElement.getAttribute('data-image') || event.target.getAttribute('data-image'));
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
       if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0) && xhr.responseText != null && xhr.responseText == "ADD") {

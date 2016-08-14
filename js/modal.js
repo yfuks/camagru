@@ -13,8 +13,8 @@ for (var i=0; i < montage.length; i++) {
 
 function showModal(event) {
   modal.style.display = "block";
-  imgModal.src = event.srcElement.src;
-  imageSelected = event.srcElement.src;
+  imgModal.src = (event.srcElement && event.srcElement.src) || (event.target && event.target.src);
+  imageSelected = (event.srcElement && event.srcElement.src) || (event.target && event.target.src);
 }
 
 // When the user clicks on the button, open the modal
