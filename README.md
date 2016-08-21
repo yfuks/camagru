@@ -20,3 +20,5 @@ bonus :
 - [X] Un aperçu des filtres sur la webcam
 - [ ] [css filter](http://www.w3schools.com/cssref/css3_pr_filter.asp)
 - [X] Repasser sur le css (c'est moche..)
+
+Final mark: **121/100**
